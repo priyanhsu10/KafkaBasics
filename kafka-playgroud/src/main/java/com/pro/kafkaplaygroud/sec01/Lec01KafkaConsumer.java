@@ -20,7 +20,8 @@ public class Lec01KafkaConsumer {
                 ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092",
                 ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
-                ConsumerConfig.GROUP_ID_CONFIG, "demo-group"
+                ConsumerConfig.GROUP_ID_CONFIG, "demo-group",
+                ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,"earliest"
         );
 
         ReceiverOptions<Object, Object> objectReceiverOptions = ReceiverOptions.create(consumerConfig)
@@ -29,6 +30,7 @@ public class Lec01KafkaConsumer {
         KafkaReceiver<Object, Object> kafkaReceiver = KafkaReceiver.create(objectReceiverOptions);
         kafkaReceiver.receive()
                 .doOnNext(r -> log.info("key: {} value {}", r.key(), r.value()))
+                .doOnNext(r->r.receiverOffset().acknowledge())
                 .subscribe();
     }
 }
