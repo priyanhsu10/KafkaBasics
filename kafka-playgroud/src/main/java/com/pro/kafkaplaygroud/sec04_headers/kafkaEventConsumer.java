@@ -1,4 +1,4 @@
-package com.pro.kafkaplaygroud.sec04Headers;
+package com.pro.kafkaplaygroud.sec04_headers;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

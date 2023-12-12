@@ -1,4 +1,4 @@
-package com.pro.kafkaplaygroud.sec04Headers;
+package com.pro.kafkaplaygroud.sec04_headers;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
